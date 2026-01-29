@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-gray-900 min-h-screen;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Phoneme display styling */
+  .phoneme-card {
+    @apply relative rounded-2xl p-6 transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .phoneme-card--short-vowel {
+    @apply bg-phoneme-short-vowel/20 border-2 border-phoneme-short-vowel;
+    @apply hover:bg-phoneme-short-vowel/30 focus:ring-phoneme-short-vowel;
+  }
+
+  .phoneme-card--long-vowel {
+    @apply bg-phoneme-long-vowel/20 border-2 border-phoneme-long-vowel;
+    @apply hover:bg-phoneme-long-vowel/30 focus:ring-phoneme-long-vowel;
+  }
+
+  .phoneme-card--consonant {
+    @apply bg-phoneme-consonant/20 border-2 border-phoneme-consonant;
+    @apply hover:bg-phoneme-consonant/30 focus:ring-phoneme-consonant;
+  }
+
+  .phoneme-card--digraph {
+    @apply bg-phoneme-digraph/20 border-2 border-phoneme-digraph;
+    @apply hover:bg-phoneme-digraph/30 focus:ring-phoneme-digraph;
+  }
+
+  .phoneme-card--blend {
+    @apply bg-phoneme-blend/20 border-2 border-phoneme-blend;
+    @apply hover:bg-phoneme-blend/30 focus:ring-phoneme-blend;
+  }
+
+  /* XP bar styling */
+  .xp-bar {
+    @apply h-3 rounded-full bg-gray-200 overflow-hidden;
+  }
+
+  .xp-bar__fill {
+    @apply h-full bg-gradient-to-r from-game-xp to-yellow-300 rounded-full;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Game button styling */
+  .game-button {
+    @apply relative px-6 py-3 rounded-xl font-bold text-white;
+    @apply transform transition-all duration-200;
+    @apply hover:scale-105 hover:-translate-y-0.5;
+    @apply active:scale-95 active:translate-y-0;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .game-button--primary {
+    @apply bg-gradient-to-br from-game-primary to-game-secondary;
+    @apply shadow-lg shadow-game-primary/30;
+    @apply hover:shadow-xl hover:shadow-game-primary/40;
+    @apply focus:ring-game-primary;
+  }
+
+  .game-button--success {
+    @apply bg-gradient-to-br from-game-success to-emerald-400;
+    @apply shadow-lg shadow-game-success/30;
+    @apply hover:shadow-xl hover:shadow-game-success/40;
+    @apply focus:ring-game-success;
+  }
+
+  .game-button--accent {
+    @apply bg-gradient-to-br from-game-accent to-amber-400;
+    @apply shadow-lg shadow-game-accent/30;
+    @apply hover:shadow-xl hover:shadow-game-accent/40;
+    @apply focus:ring-game-accent;
+  }
+
+  /* World node styling */
+  .world-node {
+    @apply relative w-16 h-16 rounded-full;
+    @apply flex items-center justify-center;
+    @apply transition-all duration-300;
+    @apply cursor-pointer;
+  }
+
+  .world-node--locked {
+    @apply bg-gray-300 text-gray-500;
+    @apply cursor-not-allowed;
+  }
+
+  .world-node--available {
+    @apply bg-gradient-to-br from-game-primary to-game-secondary;
+    @apply text-white shadow-lg;
+    @apply hover:scale-110 hover:shadow-xl;
+    @apply animate-pulse-glow;
+  }
+
+  .world-node--completed {
+    @apply bg-gradient-to-br from-game-success to-emerald-400;
+    @apply text-white shadow-lg;
+    @apply hover:scale-110;
+  }
+
+  /* Lesson progress stepper */
+  .lesson-stepper {
+    @apply flex items-center justify-between;
+  }
+
+  .lesson-step {
+    @apply flex flex-col items-center gap-2;
+  }
+
+  .lesson-step__icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+    @apply transition-all duration-300;
+  }
+
+  .lesson-step__icon--pending {
+    @apply bg-gray-200 text-gray-400;
+  }
+
+  .lesson-step__icon--active {
+    @apply bg-game-primary text-white shadow-lg;
+    @apply animate-pulse-glow;
+  }
+
+  .lesson-step__icon--completed {
+    @apply bg-game-success text-white;
+  }
+
+  /* Karaoke text highlighting */
+  .karaoke-word {
+    @apply inline-block px-1 py-0.5 rounded transition-all duration-150;
+  }
+
+  .karaoke-word--active {
+    @apply bg-game-accent/30 scale-110 font-bold;
+  }
+
+  .karaoke-word--stressed {
+    @apply text-lg font-bold;
+  }
+}
+
+@layer utilities {
+  /* Custom utilities for phonics app */
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-game-primary to-game-secondary;
+  }
+
+  /* Smooth scrolling */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
