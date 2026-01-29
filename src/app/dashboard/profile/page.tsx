@@ -67,13 +67,14 @@ export default function ProfilePage() {
   const currentTitle = levelTitles[Math.min(level - 1, levelTitles.length - 1)];
 
   // Role badge colors
-  const roleColors = {
+  const roleColors: Record<string, { bg: string; text: string; label: string }> = {
     learner: { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Learner' },
     teacher: { bg: 'bg-purple-100', text: 'text-purple-700', label: 'Teacher' },
     parent: { bg: 'bg-green-100', text: 'text-green-700', label: 'Parent' },
+    admin: { bg: 'bg-red-100', text: 'text-red-700', label: 'Administrator' },
   };
 
-  const roleStyle = user?.role ? roleColors[user.role] : roleColors.learner;
+  const roleStyle = user?.role && roleColors[user.role] ? roleColors[user.role] : roleColors.learner;
 
   return (
     <div className="max-w-4xl mx-auto">
