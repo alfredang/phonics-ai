@@ -9,13 +9,14 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from './config';
-import { User, UserProfile, DEFAULT_USER_SETTINGS } from '@/types/user';
+import { User, UserProfile, UserRole, DEFAULT_USER_SETTINGS } from '@/types/user';
 
 // Sign up with email and password
 export async function signUp(
   email: string,
   password: string,
-  displayName: string
+  displayName: string,
+  role: UserRole = 'learner'
 ): Promise<User> {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   const firebaseUser = userCredential.user;
@@ -28,6 +29,7 @@ export async function signUp(
     uid: firebaseUser.uid,
     email: firebaseUser.email!,
     displayName,
+    role,
     createdAt: new Date().toISOString(),
     lastLoginAt: new Date().toISOString(),
     profile: {
@@ -67,16 +69,18 @@ export async function signIn(email: string, password: string): Promise<User> {
       uid: firebaseUser.uid,
       email: firebaseUser.email!,
       displayName: firebaseUser.displayName || userData.displayName || 'Learner',
+      role: userData.role || 'learner', // Default to learner for existing users
       createdAt: userData.createdAt?.toDate?.()?.toISOString() || new Date().toISOString(),
       lastLoginAt: new Date().toISOString(),
     } as User;
   }
 
-  // If user doc doesn't exist (edge case), create it
+  // If user doc doesn't exist (edge case), create it as learner
   const newUser: User = {
     uid: firebaseUser.uid,
     email: firebaseUser.email!,
     displayName: firebaseUser.displayName || 'Learner',
+    role: 'learner',
     createdAt: new Date().toISOString(),
     lastLoginAt: new Date().toISOString(),
     profile: {

@@ -2,11 +2,14 @@
  * User type definitions
  */
 
+export type UserRole = 'learner' | 'teacher' | 'parent';
+
 export interface User {
   uid: string;
   email: string;
   displayName: string;
   avatarUrl?: string;
+  role: UserRole;
   createdAt: string;          // ISO date string
   lastLoginAt: string;        // ISO date string
 

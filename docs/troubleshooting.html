@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting - Phonics AI Documentation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">P</div>
+          <div class="sidebar-logo-text">
+            Phonics AI
+            <span>Documentation</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Getting Started</div>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">
+              <span class="nav-link-icon">&#127968;</span> Introduction
+            </a></li>
+            <li><a href="index.html#quick-start" class="nav-link">
+              <span class="nav-link-icon">&#9889;</span> Quick Start
+            </a></li>
+            <li><a href="index.html#how-it-works" class="nav-link">
+              <span class="nav-link-icon">&#9881;</span> How It Works
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">User Guides</div>
+          <ul class="nav-links">
+            <li><a href="learners.html" class="nav-link">
+              <span class="nav-link-icon">&#127891;</span> For Learners
+            </a></li>
+            <li><a href="teachers.html" class="nav-link">
+              <span class="nav-link-icon">&#128218;</span> For Teachers
+            </a></li>
+            <li><a href="parents.html" class="nav-link">
+              <span class="nav-link-icon">&#128106;</span> For Parents
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Learning Content</div>
+          <ul class="nav-links">
+            <li><a href="worlds.html" class="nav-link">
+              <span class="nav-link-icon">&#127759;</span> Learning Worlds
+            </a></li>
+            <li><a href="games.html" class="nav-link">
+              <span class="nav-link-icon">&#127918;</span> Games
+            </a></li>
+            <li><a href="phonemes.html" class="nav-link">
+              <span class="nav-link-icon">&#128264;</span> Phonemes
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Help</div>
+          <ul class="nav-links">
+            <li><a href="faq.html" class="nav-link">
+              <span class="nav-link-icon">&#10067;</span> FAQ
+            </a></li>
+            <li><a href="troubleshooting.html" class="nav-link active">
+              <span class="nav-link-icon">&#128295;</span> Troubleshooting
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="https://alfredang.github.io/phonics-ai/" class="app-button" target="_blank">
+          &#9658; Open App
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="mobile-header">
+        <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+        <span>Phonics AI Docs</span>
+      </div>
+
+      <header class="page-header">
+        <div class="breadcrumb">
+          <a href="index.html">Docs</a> / <span>Troubleshooting</span>
+        </div>
+        <h1>Troubleshooting Guide</h1>
+        <p>Solutions to common problems</p>
+      </header>
+
+      <div class="content">
+        <h2>Quick Fixes</h2>
+        <p>Before diving into specific issues, try these general solutions that fix most problems:</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Refresh the page</strong>
+            <p>Press F5 or click the refresh button in your browser</p>
+          </li>
+          <li>
+            <strong>Clear browser cache</strong>
+            <p>Press Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)</p>
+          </li>
+          <li>
+            <strong>Try a different browser</strong>
+            <p>Chrome is recommended for the best experience</p>
+          </li>
+          <li>
+            <strong>Check your internet connection</strong>
+            <p>Make sure you're connected to WiFi or mobile data</p>
+          </li>
+        </ol>
+
+        <h2>Audio Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #ef4444;">
+          <h3>&#128264; No Sound Playing</h3>
+          <p><strong>Symptoms:</strong> Clicking speaker buttons doesn't produce any sound</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Check device volume</strong> - Make sure your device isn't muted and volume is turned up</li>
+            <li><strong>Check browser tab</strong> - Look for a muted speaker icon on the browser tab. Click it to unmute</li>
+            <li><strong>Check headphones</strong> - If using headphones, ensure they're properly connected</li>
+            <li><strong>Test other websites</strong> - Play audio on YouTube to verify your speakers work</li>
+            <li><strong>Restart browser</strong> - Close all browser windows and reopen</li>
+          </ol>
+
+          <div class="info-box tip">
+            <strong>Tip:</strong> If audio works in other apps but not in Phonics AI, try a different browser. Chrome provides the best audio support.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #ef4444;">
+          <h3>&#128264; Sound Quality Issues</h3>
+          <p><strong>Symptoms:</strong> Audio is distorted, choppy, or unclear</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Use headphones</strong> - Built-in speakers may not reproduce sounds clearly</li>
+            <li><strong>Check internet speed</strong> - Slow connections can cause audio stuttering</li>
+            <li><strong>Close other tabs</strong> - Too many open tabs can affect performance</li>
+            <li><strong>Update browser</strong> - Older browsers may have audio issues</li>
+          </ol>
+        </div>
+
+        <h2>Microphone Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #f97316;">
+          <h3>&#127908; Microphone Not Working</h3>
+          <p><strong>Symptoms:</strong> Voice recording features don't respond or show errors</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li>
+              <strong>Grant microphone permission</strong>
+              <p>When prompted, click "Allow" to let the app use your microphone</p>
+            </li>
+            <li>
+              <strong>Check browser settings</strong>
+              <ul>
+                <li><strong>Chrome:</strong> Settings → Privacy and security → Site settings → Microphone</li>
+                <li><strong>Safari:</strong> Preferences → Websites → Microphone</li>
+                <li><strong>Firefox:</strong> Settings → Privacy & Security → Permissions → Microphone</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Close other apps using microphone</strong>
+              <p>Only one app can use the microphone at a time</p>
+            </li>
+            <li>
+              <strong>Check microphone hardware</strong>
+              <p>Test your microphone in another app (like Voice Memos) to ensure it works</p>
+            </li>
+            <li>
+              <strong>Use Chrome browser</strong>
+              <p>Chrome has the best support for Web Speech API features</p>
+            </li>
+          </ol>
+
+          <div class="info-box warning">
+            <strong>Note:</strong> Voice recording features require a working microphone and may not be available on all devices or browsers.
+          </div>
+        </div>
+
+        <h2>Login & Account Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #3b82f6;">
+          <h3>&#128274; Can't Log In</h3>
+          <p><strong>Symptoms:</strong> Unable to access your account</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Check email address</strong> - Ensure you're using the correct email</li>
+            <li><strong>Check password</strong> - Make sure Caps Lock isn't on</li>
+            <li><strong>Reset password</strong> - Click "Forgot Password" to reset</li>
+            <li><strong>Try Google sign-in</strong> - If you registered with Google, use the Google button</li>
+            <li><strong>Clear cookies</strong> - Old login data might be causing conflicts</li>
+          </ol>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #3b82f6;">
+          <h3>&#128274; Forgot Password</h3>
+          <p><strong>Symptoms:</strong> Can't remember your password</p>
+
+          <h4>Steps to Reset:</h4>
+          <ol>
+            <li>Go to the login page</li>
+            <li>Click "Forgot Password"</li>
+            <li>Enter your email address</li>
+            <li>Check your email (including spam folder)</li>
+            <li>Click the reset link in the email</li>
+            <li>Create a new password</li>
+          </ol>
+
+          <div class="info-box tip">
+            <strong>Tip:</strong> If you don't receive the reset email within a few minutes, check your spam folder or try again.
+          </div>
+        </div>
+
+        <h2>Progress & Data Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #a855f7;">
+          <h3>&#128202; Progress Not Saving</h3>
+          <p><strong>Symptoms:</strong> Completed lessons don't show as completed after refresh</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Verify you're logged in</strong> - Progress only saves when logged into an account</li>
+            <li><strong>Check internet connection</strong> - Progress syncs to the cloud when online</li>
+            <li><strong>Wait a moment before closing</strong> - Allow time for data to sync after completing a lesson</li>
+            <li><strong>Don't use private/incognito mode</strong> - Progress may not persist in private browsing</li>
+          </ol>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #a855f7;">
+          <h3>&#128202; Progress Disappeared</h3>
+          <p><strong>Symptoms:</strong> Previous progress no longer shows</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Check you're on the right account</strong> - You might have multiple accounts</li>
+            <li><strong>Verify the email address</strong> - Ensure you logged in with the same email</li>
+            <li><strong>Log out and log back in</strong> - This can refresh your data from the server</li>
+            <li><strong>Wait and refresh</strong> - Sometimes data takes time to sync</li>
+          </ol>
+
+          <div class="info-box warning">
+            <strong>Important:</strong> If you used the app without logging in, that progress cannot be recovered. Always create an account to save your progress!
+          </div>
+        </div>
+
+        <h2>Display & Performance Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #22c55e;">
+          <h3>&#128187; App Loading Slowly</h3>
+          <p><strong>Symptoms:</strong> Pages take a long time to load or feel sluggish</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Check internet speed</strong> - Run a speed test at speedtest.net</li>
+            <li><strong>Close unused browser tabs</strong> - Too many tabs consume memory</li>
+            <li><strong>Restart your browser</strong> - Clears memory and cached data</li>
+            <li><strong>Update your browser</strong> - Older versions may be slower</li>
+            <li><strong>Disable browser extensions</strong> - Some extensions can slow down websites</li>
+            <li><strong>Try a different device</strong> - Older devices may struggle with animations</li>
+          </ol>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #22c55e;">
+          <h3>&#128187; Display Not Rendering Correctly</h3>
+          <p><strong>Symptoms:</strong> Elements look broken, overlapping, or missing</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Zoom to 100%</strong> - Press Ctrl+0 (Windows) or Cmd+0 (Mac)</li>
+            <li><strong>Clear browser cache</strong> - Old CSS files might be cached</li>
+            <li><strong>Try a different browser</strong> - Chrome is recommended</li>
+            <li><strong>Disable dark mode extensions</strong> - They can interfere with app styling</li>
+            <li><strong>Check screen resolution</strong> - Very low resolutions may cause issues</li>
+          </ol>
+        </div>
+
+        <h2>Mobile-Specific Issues</h2>
+
+        <div class="card" style="border-left: 4px solid #ec4899;">
+          <h3>&#128241; Touch Not Responding</h3>
+          <p><strong>Symptoms:</strong> Tapping buttons or dragging elements doesn't work</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Refresh the page</strong> - Pull down to refresh on mobile</li>
+            <li><strong>Close and reopen browser</strong> - Fully close the app and restart</li>
+            <li><strong>Clear browser data</strong> - Go to browser settings and clear cache</li>
+            <li><strong>Restart your device</strong> - Sometimes a reboot is needed</li>
+          </ol>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #ec4899;">
+          <h3>&#128241; Screen Too Small</h3>
+          <p><strong>Symptoms:</strong> Content is hard to see or tap on smaller screens</p>
+
+          <h4>Solutions:</h4>
+          <ol>
+            <li><strong>Use landscape mode</strong> - Rotate your device sideways</li>
+            <li><strong>Use a tablet instead</strong> - Larger screens provide a better experience</li>
+            <li><strong>Use a computer</strong> - Desktop provides the best experience for games</li>
+          </ol>
+        </div>
+
+        <h2>Browser Support</h2>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Browser</th>
+              <th>Support Level</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chrome</td>
+              <td>&#9989; Recommended</td>
+              <td>Best support for all features</td>
+            </tr>
+            <tr>
+              <td>Safari</td>
+              <td>&#9989; Good</td>
+              <td>May have limited speech features</td>
+            </tr>
+            <tr>
+              <td>Firefox</td>
+              <td>&#9989; Good</td>
+              <td>May have limited speech features</td>
+            </tr>
+            <tr>
+              <td>Edge</td>
+              <td>&#9989; Good</td>
+              <td>Similar to Chrome support</td>
+            </tr>
+            <tr>
+              <td>Internet Explorer</td>
+              <td>&#10060; Not Supported</td>
+              <td>Please use a modern browser</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Still Need Help?</h2>
+
+        <p>If you've tried the solutions above and still have issues:</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h4>&#10067; Check the FAQ</h4>
+            <p>Many common questions are answered in our <a href="faq.html">FAQ page</a>.</p>
+          </div>
+          <div class="card">
+            <h4>&#128027; Report a Bug</h4>
+            <p>Found a bug? Report it on <a href="https://github.com/alfredang/phonics-ai/issues/new" target="_blank">GitHub Issues</a>.</p>
+          </div>
+        </div>
+
+        <h3>When Reporting Issues, Include:</h3>
+        <ul>
+          <li>What you were trying to do</li>
+          <li>What happened instead</li>
+          <li>Your browser name and version</li>
+          <li>Your device type (computer, tablet, phone)</li>
+          <li>Any error messages you saw</li>
+          <li>Screenshots if possible</li>
+        </ul>
+
+        <footer class="footer">
+          <p>&copy; 2024 Phonics AI. <a href="https://github.com/alfredang/phonics-ai" target="_blank">View on GitHub</a></p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+      const sidebar = document.querySelector('.sidebar');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (window.innerWidth <= 1024 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { User } from '@/types/user';
+import { User, UserRole } from '@/types/user';
 import * as authService from '@/lib/firebase/auth';
 
 interface AuthStore {
@@ -17,11 +17,14 @@ interface AuthStore {
   clearError: () => void;
 
   // Auth operations
-  signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, displayName: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<User>;
+  signUp: (email: string, password: string, displayName: string, role?: UserRole) => Promise<User>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   initializeAuth: () => () => void;
+
+  // Helpers
+  getDashboardPath: () => string;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -58,6 +61,7 @@ export const useAuthStore = create<AuthStore>()(
             isLoading: false,
             error: null,
           });
+          return user;
         } catch (error: unknown) {
           const message = error instanceof Error ? error.message : 'Failed to sign in';
           set({
@@ -69,16 +73,17 @@ export const useAuthStore = create<AuthStore>()(
       },
 
       // Sign up
-      signUp: async (email, password, displayName) => {
+      signUp: async (email, password, displayName, role = 'learner') => {
         set({ isLoading: true, error: null });
         try {
-          const user = await authService.signUp(email, password, displayName);
+          const user = await authService.signUp(email, password, displayName, role);
           set({
             user,
             isAuthenticated: true,
             isLoading: false,
             error: null,
           });
+          return user;
         } catch (error: unknown) {
           const message = error instanceof Error ? error.message : 'Failed to create account';
           set({
@@ -165,6 +170,22 @@ export const useAuthStore = create<AuthStore>()(
         });
 
         return unsubscribe;
+      },
+
+      // Get dashboard path based on user role
+      getDashboardPath: () => {
+        const user = get().user;
+        if (!user) return '/login';
+
+        switch (user.role) {
+          case 'teacher':
+            return '/teacher';
+          case 'parent':
+            return '/parent';
+          case 'learner':
+          default:
+            return '/dashboard';
+        }
       },
     }),
     {

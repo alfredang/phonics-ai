@@ -33,8 +33,15 @@ export default function LoginPage() {
     }
 
     try {
-      await signIn(email, password);
-      router.push('/dashboard');
+      const user = await signIn(email, password);
+      // Redirect based on user role
+      if (user.role === 'teacher') {
+        router.push('/teacher');
+      } else if (user.role === 'parent') {
+        router.push('/parent');
+      } else {
+        router.push('/dashboard');
+      }
     } catch {
       // Error is handled by store
     }

@@ -3,167 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phonics AI - User Guide</title>
+  <title>Phonics AI - Documentation</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">Phonics AI Guide</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="learners.html">For Learners</a></li>
-        <li><a href="teachers.html">For Teachers</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="https://alfredang.github.io/phonics-ai/" class="btn-primary" target="_blank">Open App</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Phonics AI</h1>
-      <p>Your interactive guide to mastering English pronunciation through games and fun!</p>
-      <div class="hero-buttons">
-        <a href="learners.html" class="btn btn-primary">I'm a Learner</a>
-        <a href="teachers.html" class="btn btn-secondary">I'm a Teacher</a>
+  <div class="docs-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">P</div>
+          <div class="sidebar-logo-text">
+            Phonics AI
+            <span>Documentation</span>
+          </div>
+        </a>
       </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="intro">
-      <h2>What is Phonics AI?</h2>
-      <p>Phonics AI is an interactive web application designed to help students aged 9-15 learn English pronunciation through engaging games, structured lessons, and AI-powered feedback.</p>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Getting Started</div>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active">
+              <span class="nav-link-icon">&#127968;</span> Introduction
+            </a></li>
+            <li><a href="index.html#quick-start" class="nav-link">
+              <span class="nav-link-icon">&#9889;</span> Quick Start
+            </a></li>
+            <li><a href="index.html#how-it-works" class="nav-link">
+              <span class="nav-link-icon">&#9881;</span> How It Works
+            </a></li>
+          </ul>
+        </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎮</div>
-          <h3>Fun Games</h3>
-          <p>Learn through interactive games like Phoneme Pop, Word Builder, and Sound Match.</p>
+        <div class="nav-section">
+          <div class="nav-section-title">User Guides</div>
+          <ul class="nav-links">
+            <li><a href="learners.html" class="nav-link">
+              <span class="nav-link-icon">&#127891;</span> For Learners
+            </a></li>
+            <li><a href="teachers.html" class="nav-link">
+              <span class="nav-link-icon">&#128218;</span> For Teachers
+            </a></li>
+            <li><a href="parents.html" class="nav-link">
+              <span class="nav-link-icon">&#128106;</span> For Parents
+            </a></li>
+          </ul>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>44 Phonemes</h3>
-          <p>Master all 44 English sounds with visual mouth guides and audio examples.</p>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Learning Content</div>
+          <ul class="nav-links">
+            <li><a href="worlds.html" class="nav-link">
+              <span class="nav-link-icon">&#127759;</span> Learning Worlds
+            </a></li>
+            <li><a href="games.html" class="nav-link">
+              <span class="nav-link-icon">&#127918;</span> Games
+            </a></li>
+            <li><a href="phonemes.html" class="nav-link">
+              <span class="nav-link-icon">&#128264;</span> Phonemes
+            </a></li>
+          </ul>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏆</div>
-          <h3>Earn Rewards</h3>
-          <p>Collect XP, unlock achievements, and complete daily quests as you learn.</p>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Help</div>
+          <ul class="nav-links">
+            <li><a href="faq.html" class="nav-link">
+              <span class="nav-link-icon">&#10067;</span> FAQ
+            </a></li>
+            <li><a href="troubleshooting.html" class="nav-link">
+              <span class="nav-link-icon">&#128295;</span> Troubleshooting
+            </a></li>
+          </ul>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🗣️</div>
-          <h3>Speech Practice</h3>
-          <p>Listen to correct pronunciations and practice speaking with voice recording.</p>
-        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="https://alfredang.github.io/phonics-ai/" class="app-button" target="_blank">
+          &#9658; Open App
+        </a>
       </div>
-    </section>
+    </aside>
 
-    <section class="worlds-overview">
-      <h2>5 Learning Worlds</h2>
-      <p>Progress through themed worlds, each focusing on different phonics skills:</p>
-
-      <div class="worlds-list">
-        <div class="world-card world-1">
-          <span class="world-number">1</span>
-          <h3>Letters Land</h3>
-          <p>Learn individual letter sounds (Ages 9-10)</p>
-        </div>
-        <div class="world-card world-2">
-          <span class="world-number">2</span>
-          <h3>Word City</h3>
-          <p>Blend sounds into simple words (Ages 10-11)</p>
-        </div>
-        <div class="world-card world-3">
-          <span class="world-number">3</span>
-          <h3>Sentence Street</h3>
-          <p>Read simple sentences fluently (Ages 11-12)</p>
-        </div>
-        <div class="world-card world-4">
-          <span class="world-number">4</span>
-          <h3>Paragraph Park</h3>
-          <p>Master connected text reading (Ages 12-13)</p>
-        </div>
-        <div class="world-card world-5">
-          <span class="world-number">5</span>
-          <h3>Story Kingdom</h3>
-          <p>Become a fluent reader (Ages 13-15)</p>
-        </div>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="mobile-header">
+        <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+        <span>Phonics AI Docs</span>
       </div>
-    </section>
 
-    <section class="lesson-structure">
-      <h2>How Lessons Work</h2>
-      <p>Every lesson follows a proven 4-phase learning approach:</p>
+      <header class="page-header">
+        <div class="breadcrumb">
+          <a href="index.html">Docs</a> / <span>Introduction</span>
+        </div>
+        <h1>Welcome to Phonics AI</h1>
+        <p>Your interactive guide to mastering English pronunciation through games and fun!</p>
+      </header>
 
-      <div class="phases">
-        <div class="phase">
-          <div class="phase-number">1</div>
-          <h3>Listen</h3>
-          <p>Hear the sounds pronounced correctly with visual mouth guides</p>
+      <div class="content">
+        <h2>What is Phonics AI?</h2>
+        <p>Phonics AI is a free, interactive web application designed to help students aged 9-15 learn English pronunciation through engaging games, structured lessons, and AI-powered feedback.</p>
+
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="feature-card-icon">&#127918;</div>
+            <h4>Fun Games</h4>
+            <p>Learn through interactive games like Phoneme Pop, Word Builder, and Sound Match.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#127919;</div>
+            <h4>44 Phonemes</h4>
+            <p>Master all 44 English sounds with visual mouth guides and audio examples.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#127942;</div>
+            <h4>Earn Rewards</h4>
+            <p>Collect XP, unlock achievements, and complete daily quests as you learn.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#128483;</div>
+            <h4>Speech Practice</h4>
+            <p>Listen to correct pronunciations and practice speaking with voice recording.</p>
+          </div>
         </div>
-        <div class="phase-arrow">→</div>
-        <div class="phase">
-          <div class="phase-number">2</div>
-          <h3>Practice</h3>
-          <p>Try the sounds yourself with guided exercises</p>
+
+        <h2 id="quick-start">Quick Start</h2>
+        <p>Get started with Phonics AI in just a few steps:</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Visit the App</strong>
+            <p>Go to <a href="https://alfredang.github.io/phonics-ai/" target="_blank">alfredang.github.io/phonics-ai</a></p>
+          </li>
+          <li>
+            <strong>Create an Account</strong>
+            <p>Sign up with your email to save your progress</p>
+          </li>
+          <li>
+            <strong>Start in Letters Land</strong>
+            <p>Begin with the first world to learn basic letter sounds</p>
+          </li>
+          <li>
+            <strong>Complete Lessons</strong>
+            <p>Work through each lesson's 4 phases: Listen, Practice, Play, Assess</p>
+          </li>
+          <li>
+            <strong>Earn XP & Level Up</strong>
+            <p>Collect rewards and unlock new worlds as you progress</p>
+          </li>
+        </ol>
+
+        <div class="info-box tip">
+          <strong>Tip:</strong> Practice every day to build your streak and earn bonus XP!
         </div>
-        <div class="phase-arrow">→</div>
-        <div class="phase">
-          <div class="phase-number">3</div>
-          <h3>Play</h3>
-          <p>Reinforce learning through fun games</p>
+
+        <h2 id="how-it-works">How It Works</h2>
+
+        <h3>The 4-Phase Learning Approach</h3>
+        <p>Every lesson follows a proven pedagogical framework:</p>
+
+        <div class="phases-grid">
+          <div class="phase-card">
+            <div class="phase-number">1</div>
+            <h4>Listen</h4>
+            <p>Hear sounds with visual mouth guides</p>
+          </div>
+          <div class="phase-card">
+            <div class="phase-number">2</div>
+            <h4>Practice</h4>
+            <p>Try the sounds with feedback</p>
+          </div>
+          <div class="phase-card">
+            <div class="phase-number">3</div>
+            <h4>Play</h4>
+            <p>Reinforce through games</p>
+          </div>
+          <div class="phase-card">
+            <div class="phase-number">4</div>
+            <h4>Assess</h4>
+            <p>Test and earn stars</p>
+          </div>
         </div>
-        <div class="phase-arrow">→</div>
-        <div class="phase">
-          <div class="phase-number">4</div>
-          <h3>Assess</h3>
-          <p>Test your knowledge and earn stars</p>
+
+        <h3>5 Learning Worlds</h3>
+        <p>Progress through themed worlds, each focusing on different phonics skills:</p>
+
+        <div class="world-list">
+          <div class="world-item">
+            <div class="world-number">1</div>
+            <div class="world-info">
+              <h4>Letters Land</h4>
+              <p>Learn individual letter sounds (Ages 9-10)</p>
+            </div>
+          </div>
+          <div class="world-item">
+            <div class="world-number">2</div>
+            <div class="world-info">
+              <h4>Word City</h4>
+              <p>Blend sounds into simple words (Ages 10-11)</p>
+            </div>
+          </div>
+          <div class="world-item">
+            <div class="world-number">3</div>
+            <div class="world-info">
+              <h4>Sentence Street</h4>
+              <p>Read simple sentences fluently (Ages 11-12)</p>
+            </div>
+          </div>
+          <div class="world-item">
+            <div class="world-number">4</div>
+            <div class="world-info">
+              <h4>Paragraph Park</h4>
+              <p>Master connected text reading (Ages 12-13)</p>
+            </div>
+          </div>
+          <div class="world-item">
+            <div class="world-number">5</div>
+            <div class="world-info">
+              <h4>Story Kingdom</h4>
+              <p>Become a fluent reader (Ages 13-15)</p>
+            </div>
+          </div>
         </div>
+
+        <h2>Who Is This For?</h2>
+
+        <div class="card-grid">
+          <div class="card">
+            <h4>&#127891; Students</h4>
+            <p>Ages 9-15 learning English phonics, whether as a first language or as ESL learners.</p>
+            <p><a href="learners.html">Read the Learner's Guide &rarr;</a></p>
+          </div>
+          <div class="card">
+            <h4>&#128218; Teachers</h4>
+            <p>Educators looking to supplement phonics instruction with interactive digital tools.</p>
+            <p><a href="teachers.html">Read the Teacher's Guide &rarr;</a></p>
+          </div>
+          <div class="card">
+            <h4>&#128106; Parents</h4>
+            <p>Parents supporting their children's reading development at home.</p>
+            <p><a href="parents.html">Read the Parent's Guide &rarr;</a></p>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h2>Ready to Start Learning?</h2>
+          <p>Jump into the app and begin your phonics adventure!</p>
+          <a href="https://alfredang.github.io/phonics-ai/" class="cta-button" target="_blank">Open Phonics AI</a>
+        </div>
+
+        <footer class="footer">
+          <p>&copy; 2024 Phonics AI. <a href="https://github.com/alfredang/phonics-ai" target="_blank">View on GitHub</a></p>
+        </footer>
       </div>
-    </section>
+    </main>
+  </div>
 
-    <section class="quick-start">
-      <h2>Quick Start</h2>
-      <ol class="steps">
-        <li>
-          <strong>Create an account</strong>
-          <p>Sign up with your email to save your progress</p>
-        </li>
-        <li>
-          <strong>Start in Letters Land</strong>
-          <p>Begin with the first world to learn basic sounds</p>
-        </li>
-        <li>
-          <strong>Complete lessons</strong>
-          <p>Work through each lesson's 4 phases</p>
-        </li>
-        <li>
-          <strong>Earn XP and level up</strong>
-          <p>Collect rewards and unlock new worlds</p>
-        </li>
-        <li>
-          <strong>Practice daily</strong>
-          <p>Complete daily quests to maintain your streak</p>
-        </li>
-      </ol>
-
-      <a href="https://alfredang.github.io/phonics-ai/" class="btn btn-primary btn-large" target="_blank">Start Learning Now</a>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2024 Phonics AI. Built for learners everywhere.</p>
-      <div class="footer-links">
-        <a href="https://github.com/alfredang/phonics-ai" target="_blank">GitHub</a>
-        <a href="https://alfredang.github.io/phonics-ai/" target="_blank">App</a>
-      </div>
-    </div>
-  </footer>
+  <script>
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+      const sidebar = document.querySelector('.sidebar');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (window.innerWidth <= 1024 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>

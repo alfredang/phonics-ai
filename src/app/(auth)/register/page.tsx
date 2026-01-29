@@ -4,14 +4,16 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff, Sparkles, Check } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, Sparkles, Check, GraduationCap, Users, BookOpen } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { Button } from '@/components/ui/Button';
+import { UserRole } from '@/types/user';
 
 export default function RegisterPage() {
   const router = useRouter();
   const { signUp, isLoading, error, clearError } = useAuthStore();
 
+  const [role, setRole] = useState<UserRole>('learner');
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +21,30 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [validationError, setValidationError] = useState('');
+
+  const roleOptions = [
+    {
+      id: 'learner' as UserRole,
+      label: 'Student',
+      description: 'I want to learn phonics',
+      icon: BookOpen,
+      color: 'purple',
+    },
+    {
+      id: 'teacher' as UserRole,
+      label: 'Teacher',
+      description: 'I want to teach students',
+      icon: GraduationCap,
+      color: 'blue',
+    },
+    {
+      id: 'parent' as UserRole,
+      label: 'Parent',
+      description: "I want to track my child's progress",
+      icon: Users,
+      color: 'green',
+    },
+  ];
 
   // Password strength indicators
   const passwordChecks = {
@@ -57,8 +83,15 @@ export default function RegisterPage() {
     }
 
     try {
-      await signUp(email, password, displayName.trim());
-      router.push('/dashboard');
+      await signUp(email, password, displayName.trim(), role);
+      // Redirect based on role
+      if (role === 'teacher') {
+        router.push('/teacher');
+      } else if (role === 'parent') {
+        router.push('/parent');
+      } else {
+        router.push('/dashboard');
+      }
     } catch {
       // Error is handled by store
     }
@@ -118,6 +151,71 @@ export default function RegisterPage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Role Selection */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-3">
+              I am a...
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {roleOptions.map((option) => {
+                const Icon = option.icon;
+                const isSelected = role === option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setRole(option.id)}
+                    className={`relative p-3 rounded-xl border-2 transition-all text-center ${
+                      isSelected
+                        ? option.color === 'purple'
+                          ? 'border-purple-500 bg-purple-50'
+                          : option.color === 'blue'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-green-500 bg-green-50'
+                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                    }`}
+                  >
+                    <Icon
+                      className={`w-6 h-6 mx-auto mb-1 ${
+                        isSelected
+                          ? option.color === 'purple'
+                            ? 'text-purple-500'
+                            : option.color === 'blue'
+                            ? 'text-blue-500'
+                            : 'text-green-500'
+                          : 'text-gray-400'
+                      }`}
+                    />
+                    <p
+                      className={`text-sm font-medium ${
+                        isSelected ? 'text-gray-800' : 'text-gray-600'
+                      }`}
+                    >
+                      {option.label}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5 hidden sm:block">
+                      {option.description}
+                    </p>
+                    {isSelected && (
+                      <motion.div
+                        layoutId="roleIndicator"
+                        className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center ${
+                          option.color === 'purple'
+                            ? 'bg-purple-500'
+                            : option.color === 'blue'
+                            ? 'bg-blue-500'
+                            : 'bg-green-500'
+                        }`}
+                      >
+                        <Check className="w-3 h-3 text-white" />
+                      </motion.div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Display Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
