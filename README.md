@@ -3,6 +3,7 @@
 An interactive, game-based phonics learning web app for ages 9-15. Built with Next.js, Firebase, and AI-powered features using Google's Gemini API.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://alfredang.github.io/phonics-ai/)
+[![Documentation](https://img.shields.io/badge/docs-user%20guide-blue)](https://github.com/alfredang/phonics-ai/tree/main/docs)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-orange)](https://firebase.google.com/)
@@ -11,6 +12,17 @@ An interactive, game-based phonics learning web app for ages 9-15. Built with Ne
 ## Live Demo
 
 **[https://alfredang.github.io/phonics-ai/](https://alfredang.github.io/phonics-ai/)**
+
+## Documentation
+
+User guides for learners and teachers:
+
+| Guide | Description |
+|-------|-------------|
+| [Home](docs/index.html) | Overview and quick start |
+| [For Learners](docs/learners.html) | Student guide - games, XP, achievements |
+| [For Teachers](docs/teachers.html) | Curriculum alignment, classroom implementation |
+| [FAQ](docs/faq.html) | Frequently asked questions |
 
 ## About
 
