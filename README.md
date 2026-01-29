@@ -2,6 +2,16 @@
 
 An interactive, game-based phonics learning web app for ages 9-15. Built with Next.js, Firebase, and AI-powered features using Google's Gemini API.
 
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://alfredang.github.io/phonics-ai/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-orange)](https://firebase.google.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC)](https://tailwindcss.com/)
+
+## Live Demo
+
+**[https://alfredang.github.io/phonics-ai/](https://alfredang.github.io/phonics-ai/)**
+
 ## About
 
 Phonics AI helps students master English pronunciation through a structured learning journey:
@@ -16,13 +26,51 @@ Phonics AI helps students master English pronunciation through a structured lear
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animation**: Framer Motion
-- **State Management**: Zustand
-- **Backend**: Firebase (Auth + Firestore)
-- **AI**: Google Gemini API
+### Frontend Framework
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [Next.js](https://nextjs.org/) | 14.2 | React framework with App Router |
+| [React](https://react.dev/) | 18.3 | UI component library |
+| [TypeScript](https://www.typescriptlang.org/) | 5.0 | Type-safe JavaScript |
+
+### Styling & Animation
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [Tailwind CSS](https://tailwindcss.com/) | 3.4 | Utility-first CSS framework |
+| [Framer Motion](https://www.framer.com/motion/) | 11.15 | Animation library |
+| [clsx](https://github.com/lukeed/clsx) | 2.1 | Conditional class names |
+| [tailwind-merge](https://github.com/dcastil/tailwind-merge) | 2.6 | Merge Tailwind classes |
+
+### State Management
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [Zustand](https://zustand-demo.pmnd.rs/) | 5.0 | Lightweight state management |
+
+### Backend & Database
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| [Firebase Auth](https://firebase.google.com/products/auth) | 11.1 | User authentication |
+| [Cloud Firestore](https://firebase.google.com/products/firestore) | 11.1 | NoSQL database |
+| [Firebase SDK](https://firebase.google.com/) | 11.1 | Firebase client library |
+
+### AI & Speech
+| Technology | Purpose |
+|------------|---------|
+| [Google Gemini API](https://ai.google.dev/) | AI-powered features |
+| [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) | Text-to-speech & speech recognition |
+
+### Development Tools
+| Technology | Purpose |
+|------------|---------|
+| [ESLint](https://eslint.org/) | Code linting |
+| [PostCSS](https://postcss.org/) | CSS processing |
+| [GitHub Actions](https://github.com/features/actions) | CI/CD deployment |
+
+### Deployment
+| Platform | Purpose |
+|----------|---------|
+| [GitHub Pages](https://pages.github.com/) | Static site hosting |
+| Next.js Static Export | Build output |
 
 ## Getting Started
 
@@ -228,6 +276,15 @@ src/
 - Achievement badges
 - Daily quests
 - Streak tracking
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 
 ## Contributing
 
