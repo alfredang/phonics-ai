@@ -3,7 +3,7 @@
 An interactive, game-based phonics learning web app for ages 9-15. Built with Next.js, Firebase, and AI-powered features using Google's Gemini API.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://alfredang.github.io/phonics-ai/)
-[![Documentation](https://img.shields.io/badge/docs-user%20guide-blue)](https://github.com/alfredang/phonics-ai/tree/main/docs)
+[![Documentation](https://img.shields.io/badge/docs-user%20guide-blue)](https://alfredang.github.io/phonics-ai/docs/)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-orange)](https://firebase.google.com/)
@@ -15,14 +15,17 @@ An interactive, game-based phonics learning web app for ages 9-15. Built with Ne
 
 ## Documentation
 
-User guides for learners and teachers:
+**[View Full Documentation](https://alfredang.github.io/phonics-ai/docs/)**
+
+User guides for learners, teachers, and parents:
 
 | Guide | Description |
 |-------|-------------|
-| [Home](docs/index.html) | Overview and quick start |
-| [For Learners](docs/learners.html) | Student guide - games, XP, achievements |
-| [For Teachers](docs/teachers.html) | Curriculum alignment, classroom implementation |
-| [FAQ](docs/faq.html) | Frequently asked questions |
+| [Home](https://alfredang.github.io/phonics-ai/docs/) | Overview and quick start |
+| [For Learners](https://alfredang.github.io/phonics-ai/docs/learners.html) | Student guide - games, XP, achievements |
+| [For Teachers](https://alfredang.github.io/phonics-ai/docs/teachers.html) | Classroom management, student progress tracking |
+| [For Parents](https://alfredang.github.io/phonics-ai/docs/parents.html) | Link accounts, monitor child's progress |
+| [FAQ](https://alfredang.github.io/phonics-ai/docs/faq.html) | Frequently asked questions |
 
 ## About
 
@@ -239,7 +242,9 @@ The static site will be generated in the `out/` directory.
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── (auth)/            # Auth pages (login, register)
-│   └── (dashboard)/       # Protected app pages
+│   ├── dashboard/         # Learner dashboard pages
+│   ├── teacher/           # Teacher dashboard (classroom management)
+│   └── parent/            # Parent dashboard (child progress)
 ├── components/
 │   ├── ui/                # Base UI components
 │   ├── phonics/           # Phoneme display components
@@ -249,7 +254,7 @@ src/
 │   └── gamification/      # XP, achievements, quests
 ├── stores/                # Zustand state stores
 ├── lib/
-│   ├── firebase/          # Firebase configuration
+│   ├── firebase/          # Firebase configuration & services
 │   └── audio/             # Audio utilities
 ├── types/                 # TypeScript type definitions
 ├── constants/             # Phonemes, lessons, worlds data
@@ -288,6 +293,11 @@ src/
 - Achievement badges
 - Daily quests
 - Streak tracking
+
+### Role-Based System
+- **Learners**: Access lessons, games, track XP and achievements
+- **Teachers**: Create classrooms, share join codes, monitor student progress
+- **Parents**: Link to child accounts, view progress reports
 
 ## Scripts
 
