@@ -4,7 +4,11 @@ const nextConfig = {
   output: 'export',
 
   // Base path for GitHub Pages (repo name)
+  // This is set via NEXT_PUBLIC_BASE_PATH env var in GitHub Actions
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+
+  // Asset prefix for static assets (same as basePath)
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
 
   // Disable image optimization for static export
   images: {
