@@ -15,6 +15,8 @@ import {
   Shield,
   UserPlus,
   ToggleRight,
+  FileText,
+  ExternalLink,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { useAdminStore } from '@/stores/adminStore';
@@ -167,7 +169,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Second Row Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Active Today */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -236,6 +238,29 @@ export default function AdminDashboardPage() {
                   <p className="text-xs text-gray-400">Registration</p>
                   <p className="text-lg font-bold text-white">
                     {appSettings?.registrationEnabled ? 'Open' : 'Closed'}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Parents */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45 }}
+        >
+          <Card className="bg-gray-800/50 border-gray-700">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Parents</p>
+                  <p className="text-2xl font-bold text-white">
+                    {isLoading ? '--' : stats?.totalParents || 0}
                   </p>
                 </div>
               </div>
@@ -356,6 +381,97 @@ export default function AdminDashboardPage() {
           </Card>
         </motion.div>
       </div>
+
+      {/* Documentation Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55 }}
+      >
+        <Card className="bg-gray-800/50 border-gray-700">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <FileText className="w-5 h-5 text-cyan-400" />
+              Documentation
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-400 mb-4">
+              Access guides and documentation for administrators, teachers, parents, and learners.
+            </p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <a
+                href="/phonics-ai/docs/admin.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-3 p-3 bg-red-500/10 rounded-xl border border-red-500/20 cursor-pointer"
+                >
+                  <Shield className="w-5 h-5 text-red-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white text-sm">Admin Guide</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </motion.div>
+              </a>
+              <a
+                href="/phonics-ai/docs/teachers.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-3 p-3 bg-blue-500/10 rounded-xl border border-blue-500/20 cursor-pointer"
+                >
+                  <BookOpen className="w-5 h-5 text-blue-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white text-sm">Teacher Guide</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </motion.div>
+              </a>
+              <a
+                href="/phonics-ai/docs/parents.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-3 p-3 bg-green-500/10 rounded-xl border border-green-500/20 cursor-pointer"
+                >
+                  <Users className="w-5 h-5 text-green-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white text-sm">Parent Guide</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </motion.div>
+              </a>
+              <a
+                href="/phonics-ai/docs/learners.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-3 p-3 bg-purple-500/10 rounded-xl border border-purple-500/20 cursor-pointer"
+                >
+                  <GraduationCap className="w-5 h-5 text-purple-400" />
+                  <div className="flex-1">
+                    <p className="font-medium text-white text-sm">Learner Guide</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-gray-400" />
+                </motion.div>
+              </a>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
     </div>
   );
 }
