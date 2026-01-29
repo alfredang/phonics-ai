@@ -3,7 +3,9 @@
 import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { Shield, ArrowLeft } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { useAdminStore } from '@/stores/adminStore';
 import { TopNav, Sidebar, BottomNav } from '@/components/navigation';
 
 interface DashboardLayoutProps {
@@ -12,7 +14,11 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
-  const { isAuthenticated, isLoading } = useAuthStore();
+  const { user, isAuthenticated, isLoading } = useAuthStore();
+  const { viewAs, setViewAs } = useAdminStore();
+
+  // Check if admin is viewing as learner
+  const isAdminViewing = user?.role === 'admin' && viewAs === 'learner';
 
   // Redirect unauthenticated users to login
   useEffect(() => {
@@ -20,6 +26,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       router.push('/login');
     }
   }, [isAuthenticated, isLoading, router]);
+
+  const handleBackToAdmin = () => {
+    setViewAs('admin');
+    router.push('/admin');
+  };
 
   // Show loading state
   if (isLoading) {
@@ -44,6 +55,27 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50">
+      {/* Admin Viewing Banner */}
+      {isAdminViewing && (
+        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              <span className="text-sm font-medium">
+                Admin Preview: Viewing as Learner
+              </span>
+            </div>
+            <button
+              onClick={handleBackToAdmin}
+              className="flex items-center gap-1 text-sm hover:underline"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Admin
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Top Navigation */}
       <TopNav />
 

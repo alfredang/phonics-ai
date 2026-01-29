@@ -1,17 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff, Sparkles, Check, GraduationCap, Users, BookOpen } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, Sparkles, Check, GraduationCap, Users, BookOpen, AlertCircle } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { Button } from '@/components/ui/Button';
 import { UserRole } from '@/types/user';
+import { getAppSettings } from '@/lib/firebase/admin';
 
 export default function RegisterPage() {
   const router = useRouter();
   const { signUp, isLoading, error, clearError } = useAuthStore();
+
+  // Registration availability state
+  const [registrationEnabled, setRegistrationEnabled] = useState(true);
+  const [registrationMessage, setRegistrationMessage] = useState('');
+  const [checkingStatus, setCheckingStatus] = useState(true);
 
   const [role, setRole] = useState<UserRole>('learner');
   const [displayName, setDisplayName] = useState('');
@@ -21,6 +27,30 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [validationError, setValidationError] = useState('');
+
+  // Check registration status on mount
+  useEffect(() => {
+    const checkRegistrationStatus = async () => {
+      try {
+        const settings = await getAppSettings();
+        setRegistrationEnabled(settings.registrationEnabled);
+        if (!settings.registrationEnabled) {
+          setRegistrationMessage(
+            settings.registrationDisabledMessage ||
+              'Registration is currently closed. Please try again later.'
+          );
+        }
+      } catch (err) {
+        console.error('Error checking registration status:', err);
+        // Default to allowing registration if we can't check
+        setRegistrationEnabled(true);
+      } finally {
+        setCheckingStatus(false);
+      }
+    };
+
+    checkRegistrationStatus();
+  }, []);
 
   const roleOptions = [
     {
@@ -96,6 +126,91 @@ export default function RegisterPage() {
       // Error is handled by store
     }
   };
+
+  // Loading state while checking registration status
+  if (checkingStatus) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="w-full max-w-md text-center"
+      >
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-xl mb-4">
+          <Sparkles className="w-10 h-10 text-white animate-pulse" />
+        </div>
+        <p className="text-gray-600">Loading...</p>
+      </motion.div>
+    );
+  }
+
+  // Registration disabled state
+  if (!registrationEnabled) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md"
+      >
+        {/* Logo & Title */}
+        <div className="text-center mb-8">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', delay: 0.1 }}
+            className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-400 to-gray-500 shadow-xl mb-4"
+          >
+            <AlertCircle className="w-10 h-10 text-white" />
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-3xl font-bold text-gray-800"
+          >
+            Registration Closed
+          </motion.h1>
+        </div>
+
+        {/* Message Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl p-8 text-center"
+        >
+          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+            <p className="text-amber-800">{registrationMessage}</p>
+          </div>
+
+          <p className="text-gray-600 mb-6">
+            Already have an account? You can still sign in.
+          </p>
+
+          <Link href="/login">
+            <Button variant="primary" size="lg" className="w-full">
+              Sign In
+            </Button>
+          </Link>
+        </motion.div>
+
+        {/* Home Link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center mt-6"
+        >
+          <Link
+            href="/"
+            className="text-gray-500 hover:text-purple-600 transition-colors text-sm"
+          >
+            ← Back to Home
+          </Link>
+        </motion.div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

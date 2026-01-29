@@ -12,8 +12,11 @@ import {
   Settings,
   LogOut,
   ChevronRight,
+  Shield,
+  ArrowLeft,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { useAdminStore } from '@/stores/adminStore';
 import { cn } from '@/lib/utils/cn';
 
 interface ParentLayoutProps {
@@ -24,22 +27,28 @@ export default function ParentLayout({ children }: ParentLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { user, isAuthenticated, isLoading, signOut } = useAuthStore();
+  const { viewAs, setViewAs } = useAdminStore();
 
-  // Redirect unauthenticated users or non-parents
+  // Check if admin is viewing as parent
+  const isAdminViewing = user?.role === 'admin' && viewAs === 'parent';
+
+  // Redirect unauthenticated users or non-parents (unless admin viewing as parent)
   useEffect(() => {
     if (!isLoading) {
       if (!isAuthenticated) {
         router.push('/login');
-      } else if (user?.role !== 'parent') {
+      } else if (user?.role !== 'parent' && !isAdminViewing) {
         // Redirect non-parents to their appropriate dashboard
-        if (user?.role === 'teacher') {
+        if (user?.role === 'admin') {
+          router.push('/admin');
+        } else if (user?.role === 'teacher') {
           router.push('/teacher');
         } else {
           router.push('/dashboard');
         }
       }
     }
-  }, [isAuthenticated, isLoading, user, router]);
+  }, [isAuthenticated, isLoading, user, router, isAdminViewing]);
 
   // Show loading state
   if (isLoading) {
@@ -57,10 +66,15 @@ export default function ParentLayout({ children }: ParentLayoutProps) {
     );
   }
 
-  // Don't render for unauthenticated users or non-parents
-  if (!isAuthenticated || user?.role !== 'parent') {
+  // Don't render for unauthenticated users or non-parents (unless admin viewing as parent)
+  if (!isAuthenticated || (user?.role !== 'parent' && !isAdminViewing)) {
     return null;
   }
+
+  const handleBackToAdmin = () => {
+    setViewAs('admin');
+    router.push('/admin');
+  };
 
   const navItems = [
     {
@@ -94,6 +108,27 @@ export default function ParentLayout({ children }: ParentLayoutProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50/50 via-teal-50/50 to-cyan-50/50">
+      {/* Admin Viewing Banner */}
+      {isAdminViewing && (
+        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              <span className="text-sm font-medium">
+                Admin Preview: Viewing as Parent
+              </span>
+            </div>
+            <button
+              onClick={handleBackToAdmin}
+              className="flex items-center gap-1 text-sm hover:underline"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Admin
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Top Navigation */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,7 +2,7 @@
  * User type definitions
  */
 
-export type UserRole = 'learner' | 'teacher' | 'parent';
+export type UserRole = 'learner' | 'teacher' | 'parent' | 'admin';
 
 export interface User {
   uid: string;

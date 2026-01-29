@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Administrators - Phonics AI Documentation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="docs-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">P</div>
+          <div class="sidebar-logo-text">
+            Phonics AI
+            <span>Documentation</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Getting Started</div>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">
+              <span class="nav-link-icon">&#127968;</span> Introduction
+            </a></li>
+            <li><a href="index.html#quick-start" class="nav-link">
+              <span class="nav-link-icon">&#9889;</span> Quick Start
+            </a></li>
+            <li><a href="index.html#how-it-works" class="nav-link">
+              <span class="nav-link-icon">&#9881;</span> How It Works
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">User Guides</div>
+          <ul class="nav-links">
+            <li><a href="learners.html" class="nav-link">
+              <span class="nav-link-icon">&#127891;</span> For Learners
+            </a></li>
+            <li><a href="teachers.html" class="nav-link">
+              <span class="nav-link-icon">&#128218;</span> For Teachers
+            </a></li>
+            <li><a href="parents.html" class="nav-link">
+              <span class="nav-link-icon">&#128106;</span> For Parents
+            </a></li>
+            <li><a href="admin.html" class="nav-link active">
+              <span class="nav-link-icon">&#128736;</span> For Administrators
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Learning Content</div>
+          <ul class="nav-links">
+            <li><a href="worlds.html" class="nav-link">
+              <span class="nav-link-icon">&#127759;</span> Learning Worlds
+            </a></li>
+            <li><a href="games.html" class="nav-link">
+              <span class="nav-link-icon">&#127918;</span> Games
+            </a></li>
+            <li><a href="phonemes.html" class="nav-link">
+              <span class="nav-link-icon">&#128264;</span> Phonemes
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Help</div>
+          <ul class="nav-links">
+            <li><a href="faq.html" class="nav-link">
+              <span class="nav-link-icon">&#10067;</span> FAQ
+            </a></li>
+            <li><a href="troubleshooting.html" class="nav-link">
+              <span class="nav-link-icon">&#128295;</span> Troubleshooting
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="https://alfredang.github.io/phonics-ai/" class="app-button" target="_blank">
+          &#9658; Open App
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="mobile-header">
+        <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+        <span>Phonics AI Docs</span>
+      </div>
+
+      <header class="page-header">
+        <div class="breadcrumb">
+          <a href="index.html">Docs</a> / <span>For Administrators</span>
+        </div>
+        <h1>Administrator Guide</h1>
+        <p>Manage users, configure settings, and control platform access</p>
+      </header>
+
+      <div class="content">
+        <h2>Overview</h2>
+        <p>The Admin Dashboard provides complete control over the Phonics AI platform. As an administrator, you can manage user accounts, configure API keys, control registration, and monitor platform statistics.</p>
+
+        <div class="info-box warning">
+          <strong>Important:</strong> Admin access should only be granted to authorized personnel. Admin actions can affect all users on the platform.
+        </div>
+
+        <h3>Admin Capabilities</h3>
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="feature-card-icon">&#128101;</div>
+            <h4>User Management</h4>
+            <p>Create, edit, deactivate, and delete user accounts</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#128273;</div>
+            <h4>API Configuration</h4>
+            <p>Manage Gemini API key for AI-powered features</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#128683;</div>
+            <h4>Registration Control</h4>
+            <p>Enable or disable new user registrations</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-icon">&#128202;</div>
+            <h4>Platform Statistics</h4>
+            <p>View usage metrics and user activity</p>
+          </div>
+        </div>
+
+        <h2>Getting Started</h2>
+
+        <h3>Accessing the Admin Dashboard</h3>
+        <ol class="steps">
+          <li>
+            <strong>Sign In with Admin Account</strong>
+            <p>Use your admin credentials to log in. You'll be automatically redirected to the Admin Dashboard.</p>
+          </li>
+          <li>
+            <strong>Navigate the Dashboard</strong>
+            <p>Use the sidebar menu to access different sections: Dashboard, User Management, and App Settings.</p>
+          </li>
+        </ol>
+
+        <div class="info-box tip">
+          <strong>Tip:</strong> The first admin account must be created directly in the Firebase database or by temporarily modifying an existing user's role.
+        </div>
+
+        <h2>Dashboard Overview</h2>
+        <p>The main dashboard displays key platform statistics at a glance:</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h4>&#128101; Total Users</h4>
+            <p>The total number of registered users across all roles (learners, teachers, parents).</p>
+          </div>
+          <div class="card">
+            <h4>&#127891; Learners</h4>
+            <p>Students actively learning phonics on the platform.</p>
+          </div>
+          <div class="card">
+            <h4>&#128218; Teachers</h4>
+            <p>Educators managing classrooms and monitoring student progress.</p>
+          </div>
+          <div class="card">
+            <h4>&#128214; Classrooms</h4>
+            <p>Total number of teacher-created classrooms.</p>
+          </div>
+          <div class="card">
+            <h4>&#128994; Active Today</h4>
+            <p>Users who have logged in within the last 24 hours.</p>
+          </div>
+          <div class="card">
+            <h4>&#128200; New This Week</h4>
+            <p>Users who registered in the past 7 days.</p>
+          </div>
+        </div>
+
+        <h2>User Management</h2>
+        <p>The User Management section allows you to view and manage all user accounts on the platform.</p>
+
+        <h3>Viewing Users</h3>
+        <p>The user list displays all accounts with the following information:</p>
+        <ul>
+          <li><strong>Name & Email</strong> - User identification</li>
+          <li><strong>Role</strong> - Learner, Teacher, Parent, or Admin</li>
+          <li><strong>Status</strong> - Active or Deactivated</li>
+          <li><strong>Joined Date</strong> - When they registered</li>
+        </ul>
+
+        <h3>Filtering Users</h3>
+        <p>Use the filter options to find specific users:</p>
+        <ul>
+          <li><strong>Search</strong> - Search by name or email</li>
+          <li><strong>Role Filter</strong> - Show only learners, teachers, parents, or all</li>
+          <li><strong>Status Filter</strong> - Show active, deactivated, or all users</li>
+        </ul>
+
+        <h3>Creating a New User</h3>
+        <ol class="steps">
+          <li>
+            <strong>Click "Add User"</strong>
+            <p>Find the Add User button in the top-right of the User Management page.</p>
+          </li>
+          <li>
+            <strong>Fill in User Details</strong>
+            <p>Enter the user's display name, email address, and a temporary password.</p>
+          </li>
+          <li>
+            <strong>Select Role</strong>
+            <p>Choose the appropriate role: Learner, Teacher, Parent, or Admin.</p>
+          </li>
+          <li>
+            <strong>Create Account</strong>
+            <p>Click Create to add the user. They can reset their password using the "Forgot Password" feature.</p>
+          </li>
+        </ol>
+
+        <div class="info-box warning">
+          <strong>Security Note:</strong> When creating admin accounts, ensure you're granting access to trusted individuals only. Admin privileges allow full platform control.
+        </div>
+
+        <h3>Editing Users</h3>
+        <p>To edit an existing user:</p>
+        <ol>
+          <li>Click the <strong>Edit</strong> button (pencil icon) next to the user</li>
+          <li>Modify the user's name, email, or role as needed</li>
+          <li>Click <strong>Save Changes</strong> to apply</li>
+        </ol>
+
+        <h3>Deactivating vs. Deleting Users</h3>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Effect</th>
+              <th>Reversible?</th>
+              <th>Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Deactivate</strong></td>
+              <td>User cannot log in, but data is preserved</td>
+              <td>Yes - can reactivate</td>
+              <td>Temporary suspension, graduated students</td>
+            </tr>
+            <tr>
+              <td><strong>Delete</strong></td>
+              <td>User account and all data permanently removed</td>
+              <td>No - permanent</td>
+              <td>Privacy requests, duplicate accounts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="info-box tip">
+          <strong>Tip:</strong> Prefer deactivation over deletion when possible. This preserves data for reporting and allows reactivation if needed.
+        </div>
+
+        <h2>App Settings</h2>
+        <p>The Settings page allows you to configure platform-wide options.</p>
+
+        <h3>API Key Management</h3>
+        <p>The Gemini API key powers AI features including pronunciation feedback and the Phoni helper chatbot.</p>
+
+        <h4>Updating the API Key</h4>
+        <ol class="steps">
+          <li>
+            <strong>Navigate to Settings</strong>
+            <p>Go to Admin Dashboard → App Settings.</p>
+          </li>
+          <li>
+            <strong>Find API Key Section</strong>
+            <p>Locate the "Gemini API Key" card.</p>
+          </li>
+          <li>
+            <strong>Enter New Key</strong>
+            <p>Paste your Gemini API key into the input field.</p>
+          </li>
+          <li>
+            <strong>Save</strong>
+            <p>Click "Update API Key" to save the changes.</p>
+          </li>
+        </ol>
+
+        <div class="info-box warning">
+          <strong>Important:</strong> Keep your API key confidential. If compromised, regenerate it from the Google AI Studio and update it here immediately.
+        </div>
+
+        <h4>Getting a Gemini API Key</h4>
+        <ol>
+          <li>Visit <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a></li>
+          <li>Sign in with your Google account</li>
+          <li>Create a new API key or use an existing one</li>
+          <li>Copy the key and paste it in the Admin Settings</li>
+        </ol>
+
+        <h3>Registration Control</h3>
+        <p>Control whether new users can register on the platform.</p>
+
+        <h4>When to Disable Registration</h4>
+        <ul>
+          <li><strong>School Holidays</strong> - Prevent registrations during breaks when support isn't available</li>
+          <li><strong>Capacity Limits</strong> - If you've reached your desired user count</li>
+          <li><strong>Maintenance</strong> - During system updates or migrations</li>
+          <li><strong>Controlled Rollout</strong> - When piloting with a specific group</li>
+        </ul>
+
+        <h4>Toggling Registration</h4>
+        <ol class="steps">
+          <li>
+            <strong>Navigate to Settings</strong>
+            <p>Go to Admin Dashboard → App Settings.</p>
+          </li>
+          <li>
+            <strong>Find Registration Section</strong>
+            <p>Locate the "User Registration" card.</p>
+          </li>
+          <li>
+            <strong>Toggle the Switch</strong>
+            <p>Click the toggle to enable or disable registration.</p>
+          </li>
+          <li>
+            <strong>Customize Message (Optional)</strong>
+            <p>When disabled, set a custom message explaining why registration is closed.</p>
+          </li>
+        </ol>
+
+        <div class="info-box tip">
+          <strong>Tip:</strong> When disabling registration, set a helpful message like "Registration will reopen on [date]" so users know when to return.
+        </div>
+
+        <h4>What Users See</h4>
+        <p>When registration is disabled, users visiting the registration page will see:</p>
+        <ul>
+          <li>A "Registration Closed" message</li>
+          <li>Your custom explanation (if set)</li>
+          <li>A link to sign in (for existing users)</li>
+          <li>A link back to the home page</li>
+        </ul>
+
+        <h3>Feature Toggles</h3>
+        <p>Control which features are available to users:</p>
+
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+              <th>Requires API Key</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AI Pronunciation Feedback</strong></td>
+              <td>Personalized feedback on user pronunciation using Gemini AI</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Speech Recognition</strong></td>
+              <td>Voice recording and browser-based speech recognition</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td><strong>Phoni Chatbot</strong></td>
+              <td>AI-powered helper owl for user questions</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Best Practices</h2>
+
+        <h3>Security Guidelines</h3>
+        <ul>
+          <li><strong>Limit Admin Accounts</strong> - Only create admin accounts for those who truly need full access</li>
+          <li><strong>Use Strong Passwords</strong> - Require admins to use complex passwords</li>
+          <li><strong>Rotate API Keys</strong> - Periodically update API keys as a security measure</li>
+          <li><strong>Audit User Accounts</strong> - Regularly review user list for inactive or suspicious accounts</li>
+          <li><strong>Document Changes</strong> - Keep a log of significant admin actions</li>
+        </ul>
+
+        <h3>User Management Tips</h3>
+        <ul>
+          <li><strong>Batch Deactivations</strong> - At the end of a school year, deactivate graduated students rather than deleting</li>
+          <li><strong>Role Verification</strong> - Verify teacher and admin role requests before granting</li>
+          <li><strong>Communication</strong> - Notify users before deactivating their accounts when possible</li>
+        </ul>
+
+        <h3>Monitoring Platform Health</h3>
+        <ul>
+          <li><strong>Check Stats Regularly</strong> - Monitor the dashboard for unusual activity patterns</li>
+          <li><strong>Review New Registrations</strong> - Keep an eye on new user growth</li>
+          <li><strong>Track Active Users</strong> - A drop in active users may indicate issues</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Common Issues</h3>
+
+        <div class="card">
+          <h4>Users report AI features not working</h4>
+          <p><strong>Solution:</strong> Check that the Gemini API key is correctly configured in Settings. Ensure the key hasn't expired or been revoked.</p>
+        </div>
+
+        <div class="card">
+          <h4>Can't access admin dashboard</h4>
+          <p><strong>Solution:</strong> Verify your account has the 'admin' role. Check with another admin or review the user record in Firebase.</p>
+        </div>
+
+        <div class="card">
+          <h4>Registration toggle not working</h4>
+          <p><strong>Solution:</strong> Ensure you have proper write permissions to the app settings document in Firestore.</p>
+        </div>
+
+        <div class="card">
+          <h4>User deletion fails</h4>
+          <p><strong>Solution:</strong> User deletion requires Firebase Admin privileges. Ensure your Firebase functions have proper permissions configured.</p>
+        </div>
+
+        <h2>Data & Privacy</h2>
+
+        <h3>User Data</h3>
+        <p>As an admin, you have access to:</p>
+        <ul>
+          <li>User profile information (name, email, role)</li>
+          <li>Account status and activity dates</li>
+          <li>Platform usage statistics</li>
+        </ul>
+
+        <h3>Privacy Responsibilities</h3>
+        <ul>
+          <li><strong>Data Protection</strong> - Handle user data responsibly and in compliance with applicable laws</li>
+          <li><strong>Access Control</strong> - Only access user data when necessary for administration</li>
+          <li><strong>Deletion Requests</strong> - Honor user requests for account deletion promptly</li>
+          <li><strong>Secure Access</strong> - Don't share admin credentials or leave sessions unattended</li>
+        </ul>
+
+        <div class="cta-section">
+          <h2>Need Help?</h2>
+          <p>If you encounter issues with admin features, check the troubleshooting guide or contact the development team.</p>
+          <a href="troubleshooting.html" class="cta-button">View Troubleshooting Guide</a>
+        </div>
+
+        <footer class="footer">
+          <p>&copy; 2024 Phonics AI. <a href="https://github.com/alfredang/phonics-ai" target="_blank">View on GitHub</a></p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+      const sidebar = document.querySelector('.sidebar');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (window.innerWidth <= 1024 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

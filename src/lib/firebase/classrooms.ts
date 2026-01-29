@@ -11,6 +11,7 @@ import {
   serverTimestamp,
   increment,
   Timestamp,
+  arrayUnion,
 } from 'firebase/firestore';
 import { db } from './config';
 import {
@@ -168,6 +169,11 @@ export async function joinClassroom(
   // Increment student count
   await updateDoc(doc(db, 'classrooms', classroom.id), {
     studentCount: increment(1),
+  });
+
+  // Add classroom ID to user's joinedClassrooms array
+  await updateDoc(doc(db, 'users', studentId), {
+    joinedClassrooms: arrayUnion(classroom.id),
   });
 
   return classroom;

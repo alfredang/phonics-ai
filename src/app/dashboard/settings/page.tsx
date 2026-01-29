@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
@@ -19,8 +19,18 @@ import {
   Zap,
   HelpCircle,
   Shield,
+  Users,
+  Copy,
+  Check,
+  X,
+  RefreshCw,
+  UserPlus,
+  GraduationCap,
+  BookOpen,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { useLearnerParentStore } from '@/stores/parentStore';
+import { useLearnerClassroomStore } from '@/stores/learnerClassroomStore';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { cn } from '@/lib/utils/cn';
@@ -86,6 +96,92 @@ function SettingSlider({ label, value, min, max, step = 1, onChange }: SettingSl
 
 export default function SettingsPage() {
   const { user, signOut } = useAuthStore();
+  const {
+    linkCode,
+    pendingLinks,
+    activeLinks,
+    isLoading: parentLinkLoading,
+    generateLinkCode,
+    fetchPendingLinks,
+    fetchActiveLinks,
+    approveLink,
+    rejectLink,
+  } = useLearnerParentStore();
+
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [generatingCode, setGeneratingCode] = useState(false);
+
+  // Classroom store
+  const {
+    joinedClassrooms,
+    isLoading: classroomLoading,
+    error: classroomError,
+    successMessage: classroomSuccess,
+    fetchJoinedClassrooms,
+    joinClassroom,
+    clearMessages: clearClassroomMessages,
+  } = useLearnerClassroomStore();
+
+  const [joinCode, setJoinCode] = useState('');
+  const [isJoining, setIsJoining] = useState(false);
+
+  // Fetch parent links and classrooms on mount
+  useEffect(() => {
+    if (user?.uid) {
+      fetchPendingLinks(user.uid);
+      fetchActiveLinks(user.uid);
+      fetchJoinedClassrooms(user.uid);
+    }
+  }, [user?.uid, fetchPendingLinks, fetchActiveLinks, fetchJoinedClassrooms]);
+
+  const handleGenerateLinkCode = async () => {
+    if (!user?.uid || !user?.displayName) return;
+    setGeneratingCode(true);
+    try {
+      await generateLinkCode(user.uid, user.displayName);
+    } catch (error) {
+      console.error('Failed to generate link code:', error);
+    }
+    setGeneratingCode(false);
+  };
+
+  const handleCopyCode = () => {
+    if (linkCode) {
+      navigator.clipboard.writeText(linkCode);
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2000);
+    }
+  };
+
+  const handleApproveLink = async (linkId: string) => {
+    if (!user?.uid) return;
+    try {
+      await approveLink(linkId, user.uid);
+    } catch (error) {
+      console.error('Failed to approve link:', error);
+    }
+  };
+
+  const handleRejectLink = async (linkId: string) => {
+    if (!user?.uid) return;
+    try {
+      await rejectLink(linkId, user.uid);
+    } catch (error) {
+      console.error('Failed to reject link:', error);
+    }
+  };
+
+  const handleJoinClassroom = async () => {
+    if (!user?.uid || !user?.displayName || !joinCode.trim()) return;
+    setIsJoining(true);
+    try {
+      await joinClassroom(user.uid, user.displayName, joinCode.trim(), user.avatarUrl);
+      setJoinCode('');
+    } catch (error) {
+      console.error('Failed to join classroom:', error);
+    }
+    setIsJoining(false);
+  };
 
   // Audio settings
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -318,6 +414,253 @@ export default function SettingsPage() {
                 onChange={setAchievementAlerts}
               />
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Parent Link Section */}
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <Users className="w-5 h-5 text-pink-500" />
+              Parent Link
+            </h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Link your account to a parent so they can view your learning progress.
+            </p>
+
+            {/* Generate Link Code */}
+            <div className="bg-gray-50 rounded-lg p-4 mb-4">
+              <h3 className="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                <UserPlus className="w-4 h-4" />
+                Generate Link Code
+              </h3>
+              <p className="text-sm text-gray-500 mb-3">
+                Generate a code to share with your parent. They&apos;ll enter this code in their Parent Dashboard to request access.
+              </p>
+
+              {linkCode ? (
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 bg-white border-2 border-dashed border-purple-300 rounded-lg py-3 px-4 text-center">
+                    <span className="text-2xl font-mono font-bold tracking-widest text-purple-600">
+                      {linkCode}
+                    </span>
+                  </div>
+                  <button
+                    onClick={handleCopyCode}
+                    className="p-3 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
+                    title="Copy code"
+                  >
+                    {copiedCode ? (
+                      <Check className="w-5 h-5 text-green-600" />
+                    ) : (
+                      <Copy className="w-5 h-5 text-purple-600" />
+                    )}
+                  </button>
+                  <button
+                    onClick={handleGenerateLinkCode}
+                    disabled={generatingCode}
+                    className="p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    title="Generate new code"
+                  >
+                    <RefreshCw className={cn('w-5 h-5 text-gray-600', generatingCode && 'animate-spin')} />
+                  </button>
+                </div>
+              ) : (
+                <Button
+                  onClick={handleGenerateLinkCode}
+                  disabled={generatingCode}
+                  className="w-full"
+                >
+                  {generatingCode ? 'Generating...' : 'Generate Link Code'}
+                </Button>
+              )}
+
+              {linkCode && (
+                <p className="text-xs text-gray-400 mt-2 text-center">
+                  Code expires in 24 hours. Share it with your parent.
+                </p>
+              )}
+            </div>
+
+            {/* Pending Requests */}
+            {pendingLinks.length > 0 && (
+              <div className="mb-4">
+                <h3 className="font-medium text-gray-800 mb-2">Pending Requests</h3>
+                <div className="space-y-2">
+                  {pendingLinks.map((link) => (
+                    <motion.div
+                      key={link.id}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center justify-between bg-yellow-50 border border-yellow-200 rounded-lg p-3"
+                    >
+                      <div>
+                        <p className="font-medium text-gray-800">{link.parentDisplayName}</p>
+                        <p className="text-sm text-gray-500">wants to link to your account</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleApproveLink(link.id)}
+                          disabled={parentLinkLoading}
+                          className="p-2 bg-green-100 hover:bg-green-200 rounded-lg transition-colors"
+                          title="Approve"
+                        >
+                          <Check className="w-4 h-4 text-green-600" />
+                        </button>
+                        <button
+                          onClick={() => handleRejectLink(link.id)}
+                          disabled={parentLinkLoading}
+                          className="p-2 bg-red-100 hover:bg-red-200 rounded-lg transition-colors"
+                          title="Reject"
+                        >
+                          <X className="w-4 h-4 text-red-600" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Linked Parents */}
+            {activeLinks.length > 0 && (
+              <div>
+                <h3 className="font-medium text-gray-800 mb-2">Linked Parents</h3>
+                <div className="space-y-2">
+                  {activeLinks.map((link) => (
+                    <div
+                      key={link.id}
+                      className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-3"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center">
+                          <User className="w-5 h-5 text-green-700" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-800">{link.parentDisplayName}</p>
+                          <p className="text-xs text-gray-500">
+                            Linked {new Date(link.linkedAt).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleRejectLink(link.id)}
+                        disabled={parentLinkLoading}
+                        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                        title="Remove link"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeLinks.length === 0 && pendingLinks.length === 0 && !linkCode && (
+              <p className="text-sm text-gray-400 text-center py-4">
+                No parents linked yet. Generate a code above to get started!
+              </p>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Classroom Section */}
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <GraduationCap className="w-5 h-5 text-blue-500" />
+              Classroom
+            </h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Join a classroom to let your teacher track your progress.
+            </p>
+
+            {/* Join Classroom */}
+            <div className="bg-gray-50 rounded-lg p-4 mb-4">
+              <h3 className="font-medium text-gray-800 mb-2 flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Join a Classroom
+              </h3>
+              <p className="text-sm text-gray-500 mb-3">
+                Enter the 6-character code your teacher gave you.
+              </p>
+
+              {/* Success/Error Messages */}
+              {classroomSuccess && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-3 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm flex items-center justify-between"
+                >
+                  <span>{classroomSuccess}</span>
+                  <button onClick={clearClassroomMessages}>
+                    <X className="w-4 h-4" />
+                  </button>
+                </motion.div>
+              )}
+              {classroomError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-3 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm flex items-center justify-between"
+                >
+                  <span>{classroomError}</span>
+                  <button onClick={clearClassroomMessages}>
+                    <X className="w-4 h-4" />
+                  </button>
+                </motion.div>
+              )}
+
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={joinCode}
+                  onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
+                  placeholder="Enter code (e.g., ABC123)"
+                  maxLength={6}
+                  className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none font-mono text-lg tracking-wider uppercase text-center"
+                />
+                <Button
+                  onClick={handleJoinClassroom}
+                  disabled={isJoining || joinCode.length < 6}
+                  isLoading={isJoining}
+                >
+                  Join
+                </Button>
+              </div>
+            </div>
+
+            {/* Joined Classrooms */}
+            {joinedClassrooms.length > 0 && (
+              <div>
+                <h3 className="font-medium text-gray-800 mb-2">Your Classrooms</h3>
+                <div className="space-y-2">
+                  {joinedClassrooms.map((classroom) => (
+                    <div
+                      key={classroom.id}
+                      className="flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-lg p-3"
+                    >
+                      <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center">
+                        <Users className="w-5 h-5 text-blue-700" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-medium text-gray-800">{classroom.name}</p>
+                        <p className="text-xs text-gray-500">
+                          Teacher: {classroom.teacherName}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {joinedClassrooms.length === 0 && (
+              <p className="text-sm text-gray-400 text-center py-4">
+                No classrooms joined yet. Enter a code above to join your teacher&apos;s classroom!
+              </p>
+            )}
           </CardContent>
         </Card>
 

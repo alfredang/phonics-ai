@@ -178,6 +178,8 @@ export const useAuthStore = create<AuthStore>()(
         if (!user) return '/login';
 
         switch (user.role) {
+          case 'admin':
+            return '/admin';
           case 'teacher':
             return '/teacher';
           case 'parent':
