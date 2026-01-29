@@ -263,21 +263,51 @@ src/
 
 ## Learning Worlds
 
-| World | Focus | Target Age |
-|-------|-------|------------|
-| Letters Land | Individual letter sounds | 9-10 |
-| Word City | CVC words, blending | 10-11 |
-| Sentence Street | Simple sentences | 11-12 |
-| Paragraph Park | Connected text | 12-13 |
-| Story Kingdom | Fluent reading | 13-15 |
+| World | Lessons | Focus | Phonemes Covered |
+|-------|---------|-------|------------------|
+| 🔤 Letters Land | 20 | Individual sounds | Short/long vowels, consonants |
+| 🏙️ Word City | 25 | Blending & digraphs | L-blends, R-blends, S-blends, digraphs |
+| 📜 Rule Realm | 20 | Vowel patterns | R-controlled vowels, diphthongs |
+| 🚂 Sentence Station | 15 | Fluency | Sentence-level reading |
+| 👑 Story Kingdom | 15 | Comprehension | Paragraph & story reading |
+
+**Total: 95 lessons covering all 44 English phonemes**
+
+## Lesson Flow
+
+Each lesson follows a 4-phase pedagogical framework:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  1. LISTEN        2. PRACTICE       3. PLAY          4. ASSESS     │
+│  ───────────      ────────────      ─────────        ──────────    │
+│  • Hear phoneme   • Record voice    • Word games     • Quiz time   │
+│  • See IPA        • AI feedback     • Match sounds   • Earn stars  │
+│  • View tips      • Get score       • Score points   • Unlock XP   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+| Phase | Description |
+|-------|-------------|
+| **Listen** | Students hear the phoneme and example words via TTS, see phoneme cards with IPA and mouth tips |
+| **Practice** | Students speak words, AI analyzes pronunciation and provides personalized feedback |
+| **Play** | Interactive games reinforce learning - match words to sounds |
+| **Assess** | Quick quiz to demonstrate mastery, earn stars based on performance |
 
 ## Features
+
+### AI-Powered Pronunciation
+- **Gemini AI Feedback**: Intelligent analysis of student pronunciation
+- **Real-time Speech Recognition**: Web Speech API captures student voice
+- **Contextual Tips**: AI provides phoneme-specific improvement suggestions
+- **Adaptive Encouragement**: Feedback adjusts based on attempt number and score
 
 ### Phonics System
 - 44 English phonemes with IPA notation
 - Color-coded by category (vowels, consonants, digraphs)
 - Animated mouth position guides
 - Audio pronunciation with Web Speech API
+- 95 structured lessons covering all sounds
 
 ### Games
 - **Phoneme Pop**: Tap bubbles with the target sound
