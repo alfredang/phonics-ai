@@ -243,6 +243,13 @@ src/
 ├── app/                    # Next.js App Router pages
 │   ├── (auth)/            # Auth pages (login, register)
 │   ├── dashboard/         # Learner dashboard pages
+│   │   ├── achievements/  # Achievements page
+│   │   ├── games/         # Games hub and individual games
+│   │   ├── profile/       # User profile page
+│   │   ├── progress/      # Progress tracking page
+│   │   ├── quests/        # Daily quests page
+│   │   ├── settings/      # Settings page
+│   │   └── worlds/        # Learning worlds and lessons
 │   ├── teacher/           # Teacher dashboard (classroom management)
 │   └── parent/            # Parent dashboard (child progress)
 ├── components/
@@ -251,13 +258,16 @@ src/
 │   ├── audio/             # Audio/speech components
 │   ├── games/             # Game components
 │   ├── lesson/            # Lesson phase components
+│   ├── sentences/         # Intonation training components
+│   ├── chatbot/           # Phoni the helper chatbot
 │   └── gamification/      # XP, achievements, quests
 ├── stores/                # Zustand state stores
 ├── lib/
 │   ├── firebase/          # Firebase configuration & services
-│   └── audio/             # Audio utilities
+│   ├── audio/             # Audio utilities
+│   └── ai/                # AI/Gemini integration
 ├── types/                 # TypeScript type definitions
-├── constants/             # Phonemes, lessons, worlds data
+├── constants/             # Phonemes, lessons, worlds, sentences data
 └── hooks/                 # Custom React hooks
 ```
 
@@ -327,9 +337,23 @@ Each lesson follows a 4-phase pedagogical framework:
 ### Gamification
 - XP earned for completing lessons and games
 - Level progression system
-- Achievement badges
-- Daily quests
+- Achievement badges (18 achievements across 4 categories)
+- Daily quests with bonus XP rewards
 - Streak tracking
+
+### Dashboard Pages
+- **Progress**: Track overall completion, world progress, and phoneme mastery
+- **Quests**: View and complete daily challenges
+- **Achievements**: Browse unlocked and locked badges
+- **Games**: Practice any phoneme with standalone games
+- **Profile**: View stats, level, and account information
+- **Settings**: Customize audio, speech, display, and gameplay options
+
+### Interactive Help
+- **Phoni the Owl 🦉**: Cute chatbot helper available on every page
+- Click the owl in the bottom-right corner to ask questions
+- Get instant answers about lessons, games, XP, and app features
+- Smart keyword matching for helpful responses
 
 ### Role-Based System
 - **Learners**: Access lessons, games, track XP and achievements
