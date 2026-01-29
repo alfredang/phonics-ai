@@ -309,6 +309,13 @@ Each lesson follows a 4-phase pedagogical framework:
 - Audio pronunciation with Web Speech API
 - 95 structured lessons covering all sounds
 
+### Intonation Training (Sentence Station)
+- **Visual Intonation Markers**: ↗️ rising, ↘️ falling, ➡️ sustained
+- **Karaoke-style Text**: Word-by-word highlighting synced with TTS
+- **Sentence Types**: Statements, yes/no questions, wh-questions, exclamations
+- **Stress Indicators**: Shows which words to emphasize
+- **AI Feedback**: Evaluates pronunciation, fluency, and intonation patterns
+
 ### Games
 - **Phoneme Pop**: Tap bubbles with the target sound
 - **Word Builder**: Drag letter tiles to build words
